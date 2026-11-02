@@ -35,7 +35,10 @@ export default function App() {
             <p>把社交主页做成一枚会轮播的动图名片</p>
           </div>
         </div>
-        <button type="button" class="btn ghost small" onClick={reset}>恢复示例</button>
+        <div class="topbar-actions">
+          <a class="source-link" href="https://cnb.cool/GesF-Lib/Card-Cast" target="_blank" rel="noreferrer" title="轮播名片生成器 - Git 源码">源码</a>
+          <button type="button" class="btn ghost small" onClick={reset}>恢复示例</button>
+        </div>
       </header>
 
       <main class="layout">

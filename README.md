@@ -1,10 +1,14 @@
 # CARD CAST · 轮播名片生成器
 
+> 源码：https://cnb.cool/GesF-Lib/Card-Cast
+
 输入 GitHub、知乎、哔哩哔哩等社交主页信息，生成一张**会自动轮播 tab 的 GIF 名片**——每个 tab 就是一个站点的展示令牌（平台图标 + 用户名 + ID 链接）。
 
 ## 使用
 
 ```bash
+git clone https://cnb.cool/GesF-Lib/Card-Cast
+cd Card-Cast
 pnpm install
 pnpm dev      # http://localhost:5173
 ```

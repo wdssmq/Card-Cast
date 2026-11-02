@@ -50,6 +50,24 @@
   color: var(--muted);
 }
 
+.topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.source-link {
+  font-size: 12px;
+  color: #7a869c;
+  text-decoration: none;
+  transition: color 0.16s;
+}
+
+.source-link:hover {
+  color: #c9d4ea;
+  text-decoration: underline;
+}
+
 /* ---------- layout ---------- */
 
 .layout {

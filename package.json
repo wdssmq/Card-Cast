@@ -3,6 +3,11 @@
   "type": "module",
   "version": "0.0.0",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://cnb.cool/GesF-Lib/Card-Cast"
+  },
+  "homepage": "https://cnb.cool/GesF-Lib/Card-Cast",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
