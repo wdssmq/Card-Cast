@@ -1,106 +1,47 @@
-import { createSignal } from 'solid-js'
-import heroImg from './assets/hero.png'
-import solidLogo from './assets/solid.svg'
-import viteLogo from './assets/vite.svg'
+import type { CardData } from './lib/types'
+import { createEffect } from 'solid-js'
+import { createStore, reconcile } from 'solid-js/store'
+import Editor from './components/Editor'
+import Preview from './components/Preview'
+import { defaultData } from './data'
+import { clearData, loadData, saveData } from './lib/data'
 import './App.css'
 
-function App() {
-  const [count, setCount] = createSignal(0)
+export default function App() {
+  const [data, setData] = createStore<CardData>(loadData())
+
+  let timer: number | undefined
+  createEffect(() => {
+    const snapshot = JSON.parse(JSON.stringify(data)) as CardData
+    window.clearTimeout(timer)
+    timer = window.setTimeout(saveData, 250, snapshot)
+  })
+
+  const reset = () => {
+    // eslint-disable-next-line no-alert -- 恢复示例不可逆，需要原生二次确认
+    if (!window.confirm('恢复示例数据？当前编辑会丢失。'))
+      return
+    clearData()
+    setData(reconcile(defaultData()))
+  }
 
   return (
-    <>
-      <section id="center">
-        <div class="hero">
-          <img src={heroImg} class="base" width="170" height="179" alt="" />
-          <img src={solidLogo} class="framework" alt="Solid logo" />
-          <img src={viteLogo} class="vite" alt="Vite logo" />
+    <div class="app">
+      <header class="topbar">
+        <div class="brand">
+          <div class="brand-mark" />
+          <div>
+            <h1>GIF CARD</h1>
+            <p>把社交主页做成一枚会轮播的动图名片</p>
+          </div>
         </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          class="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count()}
-        </button>
-      </section>
+        <button type="button" class="btn ghost small" onClick={reset}>恢复示例</button>
+      </header>
 
-      <div class="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg class="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img class="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://solidjs.com/" target="_blank">
-                <img class="button-icon" src={solidLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg class="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg class="button-icon" role="presentation" aria-hidden="true">
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg class="button-icon" role="presentation" aria-hidden="true">
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg class="button-icon" role="presentation" aria-hidden="true">
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg class="button-icon" role="presentation" aria-hidden="true">
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div class="ticks"></div>
-      <section id="spacer"></section>
-    </>
+      <main class="layout">
+        <Editor data={data} setData={setData} />
+        <Preview data={data} />
+      </main>
+    </div>
   )
 }
-
-export default App
