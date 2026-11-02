@@ -31,7 +31,7 @@ export default function App() {
         <div class="brand">
           <div class="brand-mark" />
           <div>
-            <h1>GIF CARD</h1>
+            <h1>CARD CAST</h1>
             <p>把社交主页做成一枚会轮播的动图名片</p>
           </div>
         </div>

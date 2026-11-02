@@ -2,7 +2,7 @@ import type { CardData } from './types'
 import { defaultData } from '../data'
 
 /** 存储结构变更时直接升版本，旧缓存不再读取（不做迁移） */
-const STORAGE_KEY = 'gif-card:v2'
+const STORAGE_KEY = 'card-cast:v1'
 
 /** 把用户粘贴的主页链接压成平台 ID */
 export function normalizeUid(input: string): string {

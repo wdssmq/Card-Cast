@@ -213,7 +213,7 @@ function drawHeader(ctx: Ctx, opts: RenderOptions): void {
   ctx.font = `600 11px ${FONT}`
   setLetterSpacing(ctx, 2.6)
   ctx.fillStyle = 'rgba(255, 255, 255, 0.26)'
-  ctx.fillText('GIF CARD', CARD_W - PAD, 62)
+  ctx.fillText('CARD CAST', CARD_W - PAD, 62)
   setLetterSpacing(ctx, 0)
 }
 
