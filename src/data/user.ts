@@ -18,7 +18,8 @@ export const PRESET_PROFILE: Profile = {
   location: '石家庄',
   email: 'wdssmq@qq.com',
   website: 'www.wdssmq.com',
-  avatar: null,
+  /** 头像：直接指向 public/avatar.png */
+  avatar: '/avatar.png',
   holdMs: 2000,
   size: 720,
 }
