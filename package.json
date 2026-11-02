@@ -1,0 +1,24 @@
+{
+  "name": "gif-card",
+  "type": "module",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "solid-js": "^1.9.17"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^10.0.0",
+    "@types/node": "^24.19.2",
+    "@unocss/eslint-plugin": "^66.11.0",
+    "eslint": "^10.13.0",
+    "eslint-plugin-solid": "^0.18.1",
+    "typescript": "^6.0.3",
+    "vite": "^8.3.5",
+    "vite-plugin-solid": "^2.11.14"
+  }
+}
